@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2948470332503616230}
   - component: {fileID: 444406742292727394}
   - component: {fileID: -8802896488548426835}
+  - component: {fileID: 1035807257899764257}
+  - component: {fileID: 160894241412375690}
   m_Layer: 0
   m_Name: Zucchini
   m_TagString: Untagged
@@ -95,3 +97,67 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  damage: 50
+--- !u!50 &1035807257899764257
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4800787764065455389}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!60 &160894241412375690
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4800787764065455389}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.56, y: 0.56}
+    newSize: {x: 0.56, y: 0.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.095907055, y: 0.255796}
+      - {x: -0.19413096, y: 0.287736}
+      - {x: -0.2551147, y: 0.26682544}
+      - {x: -0.25893006, y: 0.2610314}
+      - {x: -0.283584, y: 0.21228662}
+      - {x: -0.27853617, y: 0.15195759}
+      - {x: -0.24560848, y: 0.10878303}
+      - {x: -0.092764184, y: 0.051408507}
+      - {x: 0.017967744, y: -0.042850427}
+      - {x: 0.16488534, y: -0.24340397}
+      - {x: 0.20249914, y: -0.29040357}
+      - {x: 0.26828927, y: -0.2668254}
+      - {x: 0.28505424, y: -0.22381322}
+      - {x: 0.26536164, y: -0.10927682}
+      - {x: 0.18315713, y: 0.01730173}
+      - {x: -0.018783078, y: 0.21437411}
+      - {x: -0.09024688, y: 0.2536509}

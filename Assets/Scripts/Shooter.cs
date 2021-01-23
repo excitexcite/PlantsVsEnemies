@@ -5,8 +5,8 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
 
-    [SerializeField] GameObject projectile; //
-    [SerializeField] GameObject gun;
+    [SerializeField] GameObject projectile; // prefab that represens a projectile
+    [SerializeField] GameObject gun; // empty game object that is placed where the projectile has to be instatiated
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +23,5 @@ public class Shooter : MonoBehaviour
     public void Fire()
     {
         Instantiate(projectile, gun.transform.position, Quaternion.identity);
-        return;
     }
 }
