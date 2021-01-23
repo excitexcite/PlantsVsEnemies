@@ -26,7 +26,13 @@ public class Projectile : MonoBehaviour
     {
         // get the Health component from the Attacker`s gameobject
         var health = otherCollider.GetComponent<Health>();
-        health.DealDamage(damage); // tell the game object to decrease health by gamage value
-        Destroy(gameObject); // destroyed projectile gameobject after hit
+        var attacker = otherCollider.GetComponent<Attacker>();
+        if (health && attacker) // if attacker`s gameobject has both Health and Attacker components we do something
+            // otherwise such gameobject is not a correct instance of enemy
+        {
+            health.DealDamage(damage); // tell the game object to decrease health by gamage value
+            Destroy(gameObject); // destroyed projectile gameobject after hit
+        }
+       
     }
 }
