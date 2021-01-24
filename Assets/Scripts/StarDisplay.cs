@@ -27,6 +27,12 @@ public class StarDisplay : MonoBehaviour
         UpdateDisplay(); // update stars text
     }
 
+    // this method checks if we have enough stars to place defender
+    public bool HaveEnoughtStars(int amount)
+    {
+        return stars >= amount;
+    }
+
     public void SpendStars(int amount)
     {
         if (stars < amount) { return; } // if we do not have enough stars to spend use return command to exit this function

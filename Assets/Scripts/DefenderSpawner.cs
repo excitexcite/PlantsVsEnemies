@@ -12,14 +12,27 @@ public class DefenderSpawner : MonoBehaviour
         defender = defenderToSelect;
     }
 
+    // attempting to place defender if we have enough resources (stars)
+    private void AttemptToPlaceDefender(Vector2 gridPos)
+    {
+        var StarDisplay = FindObjectOfType<StarDisplay>(); // getting selected defender
+        int defenderCost = defender.GetStarCost(); // getting defender`s cost
+        // if we have enough star to place the defender
+        if (StarDisplay.HaveEnoughtStars(defenderCost))
+        {
+            SpawnDefender(gridPos); // creating the defender
+            StarDisplay.SpendStars(defenderCost); // decreasing the amount of stars
+        }
+    }
+
     // when we click mouse button this method work
     private void OnMouseDown()
     {
-        SpawnDefender(GetSquareClicked());
+        AttemptToPlaceDefender(GetSquareClicked());
         //Debug.Log("Mouse was clicked");
     }
 
-    // getting the click`s position
+    // getting the mouse click`s position
     private Vector2 GetSquareClicked()
     {
         Vector2 clickPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y); // get the click`s position in screen dimention
