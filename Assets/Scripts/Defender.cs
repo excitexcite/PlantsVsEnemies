@@ -7,15 +7,8 @@ public class Defender : MonoBehaviour
 
     [SerializeField] int starCost = 100; //
 
-    // Start is called before the first frame update
-    void Start()
+    public void AddStars(int amount)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        FindObjectOfType<StarDisplay>().AddStars(amount);
     }
 }
