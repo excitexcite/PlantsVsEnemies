@@ -5,25 +5,18 @@ using UnityEngine;
 public class DefenderSpawner : MonoBehaviour
 {
 
-    [SerializeField] GameObject defender; // prefab that represents the defender object
+    Defender defender; // object that represents the defender object
 
-    // Start is called before the first frame update
-    void Start()
+    public void SetSelectedDefender(Defender defenderToSelect)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        defender = defenderToSelect;
     }
 
     // when we click mouse button this method work
     private void OnMouseDown()
     {
         SpawnDefender(GetSquareClicked());
-        Debug.Log("Mouse was clicked");
+        //Debug.Log("Mouse was clicked");
     }
 
     // getting the click`s position
@@ -39,14 +32,15 @@ public class DefenderSpawner : MonoBehaviour
 
     private Vector2 SnapToGrid(Vector2 rawWorldPos)
     {
-        float newX = Mathf.RoundToInt(rawWorldPos.x);
+        // round mouse click cordinates
+        float newX = Mathf.RoundToInt(rawWorldPos.x); 
         float newY = Mathf.RoundToInt(rawWorldPos.y);
         return new Vector2(newX, newY);
     }
 
     private void SpawnDefender(Vector2 roundedPos)
     {
-        
-        GameObject newDefender = Instantiate(defender, roundedPos, Quaternion.identity);
+        // creating defender at a grid cell
+        Defender newDefender = Instantiate(defender, roundedPos, Quaternion.identity);
     }
 }
