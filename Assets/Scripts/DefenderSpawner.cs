@@ -15,6 +15,10 @@ public class DefenderSpawner : MonoBehaviour
     // attempting to place defender if we have enough resources (stars)
     private void AttemptToPlaceDefender(Vector2 gridPos)
     {
+        if (!defender) // if the defender was not selected, not even try to do anything with it
+        {
+            return;
+        }
         var StarDisplay = FindObjectOfType<StarDisplay>(); // getting selected defender
         int defenderCost = defender.GetStarCost(); // getting defender`s cost
         // if we have enough star to place the defender

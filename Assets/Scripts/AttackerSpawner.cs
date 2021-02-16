@@ -6,7 +6,7 @@ public class AttackerSpawner : MonoBehaviour
 {
 
     bool spawn = true; // if true spawn attackers, otherwise stop spawning proccess
-    [SerializeField] GameObject attackerPrefab; // field that represetns the attacker prefab
+    [SerializeField] Attacker attackerPrefab; // field that represetns the attacker prefab
     [SerializeField] float mixSpawnTime = 1f; // minimum probable time between spawns
     [SerializeField] float maxSpawnTime = 5f; // maximum probable time between spawns
 
@@ -18,9 +18,10 @@ public class AttackerSpawner : MonoBehaviour
         {
             float time = Random.Range(mixSpawnTime, maxSpawnTime);
             yield return new WaitForSeconds(time);
-            GameObject attacker = Instantiate(attackerPrefab,
+            Attacker newAttacker =  Instantiate(attackerPrefab,
                 transform.position,
-                Quaternion.identity) as GameObject;
+                Quaternion.identity);
+            newAttacker.transform.parent = transform;
         }
     }
 
