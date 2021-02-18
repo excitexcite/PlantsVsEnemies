@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,12 +20,31 @@ public class Attacker : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+        UpdateAnimationState();
+    }
+
+    private void UpdateAnimationState()
+    {
+        if (!currentTarget)
+        {
+            GetComponent<Animator>().SetBool("IsAttacking", false);
+        }
     }
 
     public void Attack(GameObject target)
     {
         GetComponent<Animator>().SetBool("IsAttacking", true);
         currentTarget = target;
+    }
+
+    public void StrickeCurrentTarget(int damage)
+    {
+        if (!currentTarget) { return; }
+        Health health = currentTarget.GetComponent<Health>();
+        if (health)
+        {
+            health.DealDamage(damage);
+        }
     }
 
     public void SetMovementSpeed(float speed) { moveSpeed = speed; }
