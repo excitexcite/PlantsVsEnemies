@@ -6,7 +6,7 @@ public class AttackerSpawner : MonoBehaviour
 {
 
     bool spawn = true; // if true spawn attackers, otherwise stop spawning proccess
-    [SerializeField] Attacker attackerPrefab; // field that represetns the attacker prefab
+    [SerializeField] Attacker[] attackerPrefabArray; // field that represetns the attacker prefab
     [SerializeField] float mixSpawnTime = 1f; // minimum probable time between spawns
     [SerializeField] float maxSpawnTime = 5f; // maximum probable time between spawns
 
@@ -18,11 +18,23 @@ public class AttackerSpawner : MonoBehaviour
         {
             float time = Random.Range(mixSpawnTime, maxSpawnTime);
             yield return new WaitForSeconds(time);
-            Attacker newAttacker =  Instantiate(attackerPrefab,
-                transform.position,
-                Quaternion.identity);
-            newAttacker.transform.parent = transform;
+            SpawnAttackers();
         }
+    }
+
+    private void SpawnAttackers()
+    {
+        int attackerIndex = UnityEngine.Random.Range(0, attackerPrefabArray.Length);
+        Spawn(attackerPrefabArray[attackerIndex]);
+        
+    }
+
+    private void Spawn(Attacker myAttacker)
+    {
+        Attacker newAttacker = Instantiate(myAttacker,
+            transform.position,
+            Quaternion.identity);
+        newAttacker.transform.parent = transform;
     }
 
     // Update is called once per frame
