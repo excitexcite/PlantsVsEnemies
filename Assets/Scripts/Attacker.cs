@@ -10,6 +10,18 @@ public class Attacker : MonoBehaviour
     [SerializeField] float moveSpeed = 1f; // the default attacker speed value
     GameObject currentTarget;
 
+    // when the attacker spawns we increase the number of spawned attackers
+    private void Awake()
+    {
+        FindObjectOfType<LevelController>().AttackerSpawned();
+    }
+
+    // when the attacker dies, we decrease the number of spawned attackers
+    private void OnDestroy()
+    {
+        FindObjectOfType<LevelController>().AttackerKilled();
+    }
+
     // Start is called before the first frame update
     void Start()
     {

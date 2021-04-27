@@ -29,6 +29,11 @@ public class AttackerSpawner : MonoBehaviour
         
     }
 
+    public void StopSpawning()
+    {
+        spawn = false;
+    }
+
     private void Spawn(Attacker myAttacker)
     {
         Attacker newAttacker = Instantiate(myAttacker,
